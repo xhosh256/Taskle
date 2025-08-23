@@ -1,5 +1,6 @@
-package xhosh.dev.taskle.dto.mapper;
+package xhosh.dev.taskle.mapper;
 
 public interface Mapper <F, T> {
-    T map(F object);
+    T map(F from);
+    T map(F from, T updated)
 }

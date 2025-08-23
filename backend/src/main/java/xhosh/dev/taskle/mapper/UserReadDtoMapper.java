@@ -1,4 +1,4 @@
-package xhosh.dev.taskle.dto.mapper;
+package xhosh.dev.taskle.mapper;
 
 import xhosh.dev.taskle.dto.UserReadDto;
 import xhosh.dev.taskle.entity.User;

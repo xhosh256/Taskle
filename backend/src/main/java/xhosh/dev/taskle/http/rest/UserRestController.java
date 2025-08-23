@@ -3,7 +3,6 @@ package xhosh.dev.taskle.http.rest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.server.ResponseStatusException;
 import xhosh.dev.taskle.dto.UserCreateEditDto;
 import xhosh.dev.taskle.dto.UserReadDto;

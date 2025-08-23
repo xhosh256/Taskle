@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import xhosh.dev.taskle.entity.enumeration.TagName;
-import xhosh.dev.taskle.entity.enumeration.TaskTag;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +21,6 @@ public class Tag implements BaseEntity<Integer> {
     @Enumerated(EnumType.STRING)
     private TagName name;
 
-    @OneToMany(mappedBy = "tags", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "tag", fetch = FetchType.LAZY)
     private List<TaskTag> tasks = new ArrayList<>();
 }

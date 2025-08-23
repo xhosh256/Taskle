@@ -1,11 +1,8 @@
-package xhosh.dev.taskle.entity.enumeration;
+package xhosh.dev.taskle.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import xhosh.dev.taskle.entity.BaseEntity;
-import xhosh.dev.taskle.entity.Tag;
-import xhosh.dev.taskle.entity.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +18,9 @@ public class TaskTag implements BaseEntity<Integer> {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "task_id")
-    private List<Task> tasks = new ArrayList<>();
+    private Task task;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tag_id")
-    private List<Tag> tags = new ArrayList<>();
+    private Tag tag;
 }

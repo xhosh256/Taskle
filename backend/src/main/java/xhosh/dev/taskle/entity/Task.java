@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import xhosh.dev.taskle.entity.enumeration.Status;
 import xhosh.dev.taskle.entity.enumeration.TaskDifficulty;
-import xhosh.dev.taskle.entity.enumeration.TaskTag;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +33,6 @@ public class Task extends Auditable implements BaseEntity<Integer> {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "tasks", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "task", fetch = FetchType.LAZY)
     private List<TaskTag> tags = new ArrayList<>();
 }

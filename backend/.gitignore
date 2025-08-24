@@ -33,6 +33,6 @@ build/
 .vscode/
 
 ### shit ###
-/src/main/resources/application.yaml
-/src/main/resources/ideas.txt
+/src/main/resources/application.yml
+ideas.txt
 /src/main/resources/sql/

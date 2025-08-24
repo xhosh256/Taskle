@@ -24,13 +24,13 @@ public class UserRestController {
 //    }
 
     @GetMapping
-    private List<UserReadDto> findAll() {
+    public List<UserReadDto> findAll() {
         return userService.findAll();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    private UserReadDto findById(@PathVariable("id") Long id) {
+    public UserReadDto findById(@PathVariable("id") Long id) {
         return userService
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -38,14 +38,14 @@ public class UserRestController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    private UserReadDto create(@RequestBody UserCreateEditDto createEditDto) {
+    public UserReadDto create(@RequestBody UserCreateEditDto createEditDto) {
         return userService.create(createEditDto);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    private UserReadDto update(
-            @PathVariable Long id,
+    public UserReadDto update(
+            @PathVariable("id") Long id,
             @RequestBody UserCreateEditDto createEditDto
     ) {
         return userService
@@ -55,7 +55,7 @@ public class UserRestController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    private void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) {
         if(!userService.delete(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }

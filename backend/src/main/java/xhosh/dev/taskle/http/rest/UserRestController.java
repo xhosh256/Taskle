@@ -29,6 +29,7 @@ public class UserRestController {
     }
 
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     private UserReadDto findById(@PathVariable("id") Long id) {
         return userService
                 .findById(id)
@@ -42,6 +43,7 @@ public class UserRestController {
     }
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     private UserReadDto update(
             @PathVariable Long id,
             @RequestBody UserCreateEditDto createEditDto
@@ -52,6 +54,7 @@ public class UserRestController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     private void delete(@PathVariable Long id) {
         if(!userService.delete(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);

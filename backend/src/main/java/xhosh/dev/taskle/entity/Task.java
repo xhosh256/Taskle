@@ -33,6 +33,6 @@ public class Task extends Auditable implements BaseEntity<Integer> {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "task", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "task", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<TaskTag> tags = new ArrayList<>();
 }

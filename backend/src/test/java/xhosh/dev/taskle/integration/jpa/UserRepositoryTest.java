@@ -3,7 +3,6 @@ package xhosh.dev.taskle.integration.jpa;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import xhosh.dev.taskle.entity.Account;
 import xhosh.dev.taskle.entity.Profile;
 import xhosh.dev.taskle.entity.User;
 import xhosh.dev.taskle.entity.enumeration.Role;

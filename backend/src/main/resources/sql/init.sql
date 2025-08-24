@@ -1,3 +1,10 @@
+DROP TABLE IF EXISTS task_tag CASCADE;
+DROP TABLE IF EXISTS tasks CASCADE;
+DROP TABLE IF EXISTS profiles CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS tags CASCADE;
+
+
 create table if not exists users (
     id bigint generated always as identity primary key not null,
     username varchar(128) not null unique,
@@ -36,8 +43,7 @@ create table if not exists tasks (
 
 create table if not exists tags (
     id int generated always as identity primary key not null,
-    name varchar(32) not null unique,
-    difficulty varchar(32) not null unique
+    name varchar(32) not null unique
 );
 
 create table if not exists task_tag (

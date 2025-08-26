@@ -1,10 +1,17 @@
 package xhosh.dev.taskle.service;
 
+import com.querydsl.jpa.impl.JPAQuery;
+import jakarta.persistence.EntityManager;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import xhosh.dev.taskle.dto.QPredicates;
 import xhosh.dev.taskle.dto.UserCreateEditDto;
+import xhosh.dev.taskle.dto.UserFilter;
 import xhosh.dev.taskle.dto.UserReadDto;
+import xhosh.dev.taskle.entity.QUser;
 import xhosh.dev.taskle.mapper.UserCreateEditDtoMapper;
 import xhosh.dev.taskle.mapper.UserReadDtoMapper;
 import xhosh.dev.taskle.repository.UserRepository;
@@ -29,9 +36,16 @@ public class UserService {
                 .toList();
     }
 
-//    private List<UserReadDto> findAll(UserFilter filter) {
-//
-//    }
+    public Page<UserReadDto> findAll(UserFilter filter, Pageable pageable) {
+        var predicate = QPredicates.builder()
+                .add(filter.getFirstname(), QUser.user.profile.firstname::containsIgnoreCase)
+                .add(filter.getLastname(), QUser.user.profile.lastname::containsIgnoreCase)
+                .add(filter.getBirthDate(), QUser.user.profile.birthDate::before)
+                .build();
+
+        return userRepository.findAll(predicate, pageable)
+                .map(userReadDtoMapper::map);
+    }
 
     public Optional<UserReadDto> findById(Long id) {
         return userRepository

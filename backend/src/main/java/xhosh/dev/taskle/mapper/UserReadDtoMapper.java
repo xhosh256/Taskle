@@ -1,6 +1,5 @@
 package xhosh.dev.taskle.mapper;
 
-import org.springframework.stereotype.Component;
 import xhosh.dev.taskle.dto.UserReadDto;
 import xhosh.dev.taskle.entity.User;
 

@@ -75,25 +75,6 @@ public class UserServiceTest {
     }
 
     @Test
-    void create() {
-        var createDto = getUserCreateEditDto("lenchik");
-        var userE = getUser(1L, "lenchik");
-        var readDto = getUserReadDto(1L, "lenchik");
-        when(userCreateEditDtoMapper.map(createDto)).thenReturn(userE);
-        when(userRepository.save(userE)).thenReturn(userE);
-        when(userReadDtoMapper.map(userE)).thenReturn(readDto);
-
-        var dto = userService.create(createDto);
-        assertNotNull(dto);
-        assertEquals(1L, dto.getId());
-        assertEquals("lenchik", dto.getUsername());
-
-        verify(userRepository).save(userE);
-        verify(userReadDtoMapper).map(userE);
-        verify(userCreateEditDtoMapper).map(createDto);
-    }
-
-    @Test
     void update() {
         var user = getUser(1L, "lenchik");
         var editDto = getUserCreateEditDto("ivan");

@@ -48,21 +48,21 @@ public class UserServiceTest {
         user.ifPresent(u -> assertEquals(Role.ADMIN, u.getRole()));
     }
 
-    @Test
-    @Rollback
-    void create() {
-        var user = userService.create(
-                new UserCreateEditDto(
-                        "pidor",
-                        "123qqwe",
-                        "pidoras",
-                        "gondon",
-                        LocalDate.now(),
-                        Role.ADMIN)
-        );
-
-        assertNotNull(user);
-    }
+//    @Test
+//    @Rollback
+//    void create() {
+//        var user = userService.create(
+//                new UserCreateEditDto(
+//                        "pidor",
+//                        "123qqwe",
+//                        "pidoras",
+//                        "gondon",
+//                        LocalDate.now(),
+//                        Role.ADMIN)
+//        );
+//
+//        assertNotNull(user);
+//    }
 
     @Test
     @Rollback

@@ -34,12 +34,6 @@ public class UserRestController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public UserReadDto create(@RequestBody @Valid UserCreateEditDto createEditDto) {
-        return userService.create(createEditDto);
-    }
-
     @PutMapping("/{id}")
     public UserReadDto update(
             @PathVariable("id") Long id,
@@ -60,7 +54,7 @@ public class UserRestController {
 
     @ExceptionHandler(Exception.class)
     public Exception handler(Exception exception) {
-        log.info("Произошел пиздец: {}", exception.getMessage());
+        log.info("Something went wrong: {}", exception.getMessage());
         return exception;
     }
 }

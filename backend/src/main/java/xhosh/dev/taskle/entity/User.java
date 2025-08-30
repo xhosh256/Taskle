@@ -14,7 +14,6 @@ import java.util.List;
 @Table(name = "users")
 @Data
 @NoArgsConstructor
-
 public class User extends Auditable implements BaseEntity<Long> {
 
     @Id

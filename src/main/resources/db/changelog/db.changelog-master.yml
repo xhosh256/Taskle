@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/1.0-init.sql
+  - include:
+      file: db/changelog/1.1-update.sql
+  - include:
+      file: db/changelog/1.2-authorities.sql
+  - include:
+      file: db/changelog/2.0-tasks.sql
+  - include:
+      file: db/changelog/2.1-tags.sql
+  - include:
+      file: db/changelog/2.2-update.sql
+  - include:
+      file: db/changelog/2.3-audit.sql
+  - include:
+      file: db/changelog/2.4-some-new-tags.sql
+  - include:
+      file: db/changelog/3.1-groups.sql

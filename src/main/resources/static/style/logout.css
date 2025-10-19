@@ -1,0 +1,54 @@
+#logout-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logout-container #confirm-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+  gap: 50px;
+  padding: 50px 120px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+#logout-container #confirm-container p {
+  font-size: 48px;
+  margin: 0;
+}
+
+#logout-container #confirm-container button {
+  font-size: 36px;
+  padding: 15px 70px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  font-weight: 600;
+
+  transition: box-shadow 0.15s;
+}
+
+#logout-container #confirm-container button:hover {
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.6);
+}
+
+#logout-container #confirm-container #confirm {
+  background-color: #3572EF;
+}
+
+#logout-container #confirm-container #deny {
+  background-color: white;
+  border: 5px solid black;
+  padding: 10px 65px;
+  color: black;
+}

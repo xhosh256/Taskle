@@ -1,0 +1,80 @@
+nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  background-color: white;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  white-space: nowrap; 
+  overflow: hidden;
+
+  padding: 10px 0;
+  gap: 20px;
+}
+
+nav #nav-name {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  padding: 10px;
+  width: 260px;
+
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  text-align: center;
+
+  transition: box-shadow 0.15s, background-color 0.15s;
+  cursor: pointer;
+}
+
+nav #nav-name:hover {
+  background-color: rgb(245, 245, 245);
+}
+
+nav .profile-dropdown {
+  display: none;
+  position: absolute;
+  background-color: white;
+  padding: 10px 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.263);
+  border-radius: 10px;
+  z-index: 1;
+  margin-top: 60px;
+  width: 240px;
+}
+
+nav .profile-dropdown.show {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+nav .links {
+  display: flex;
+  flex-direction: column;
+  
+
+}
+
+nav .link {
+  cursor: pointer;
+  min-width: 260px;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 24px;
+  transition: background-color 0.15s;
+}
+
+nav .link:hover {
+  background-color: rgba(0, 0, 0, 0.104);
+}

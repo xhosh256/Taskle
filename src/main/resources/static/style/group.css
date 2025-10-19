@@ -111,3 +111,43 @@
   margin-left: 300px;
   padding: 10px 20px;
 }
+
+#group-page #buttons {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+#group-page #buttons .add-task-to-group-btn {
+  font-size: 16px;
+  padding: 15px 30px;
+  background-color: #3572EF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: 600;
+
+  transition: background-color 0.15s;
+}
+
+#group-page #buttons .add-task-to-group-btn:hover {
+  background-color: #1F5BE5;
+}
+
+#group-page #buttons .delete-group-btn {
+  font-size: 16px;
+  padding: 15px 30px;
+  background-color: #3ABEF9;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: 600;
+
+  transition: background-color 0.15s;
+}
+
+#group-page #buttons .delete-group-btn:hover {
+  background-color: #1FA9EB;
+}

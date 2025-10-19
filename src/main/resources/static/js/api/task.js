@@ -16,8 +16,8 @@ export async function fetchTaskById(id) {
   return data;
 }
 
-export async function fetchAllTasks(auth) {
-  const res = await fetch(`${API}/tasks?size=1000000`, {
+export async function fetchAllTasks(auth, id) {
+  const res = await fetch(`${API}/groups/${id}/tasks`, {
     method: 'GET',
     headers: {'Authorization': `Bearer ${auth.token}`}
   });
@@ -27,7 +27,7 @@ export async function fetchAllTasks(auth) {
   }
 
   const tasks = await res.json();
-  return tasks.content;
+  return tasks;
 }
 
 export async function deleteTask(id) {

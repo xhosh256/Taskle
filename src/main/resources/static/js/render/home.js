@@ -6,6 +6,7 @@ export async function renderHomePage(page) {
   document.getElementById('app').innerHTML =
     `
     <div id='tasks-page'>
+      <div id='tasks-page-title'>Tasks</div>
 
       <div id="tasks-filter">
         <button id='toggle-dropdown'>Filter</button>

@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import xhosh.dev.Taskle.aop.annotations.*;
 import xhosh.dev.Taskle.dto.group.GroupCreateDto;
 import xhosh.dev.Taskle.dto.group.GroupReadDto;
+import xhosh.dev.Taskle.dto.response.TaskReadDto;
+import xhosh.dev.Taskle.entity.QGroup;
 import xhosh.dev.Taskle.service.GroupService;
 
 import java.util.HashMap;
@@ -69,6 +71,12 @@ public class GroupController {
         response.put("message", "TASK WAS SUCCESSFULLY REMOVED");
 
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{groupId}/tasks")
+    @IsOwnGroup
+    public List<TaskReadDto> findAllNotInGroup(@PathVariable("groupId") Integer groupId) {
+        return groupService.findAllNotInGroup(groupId);
     }
 
 }

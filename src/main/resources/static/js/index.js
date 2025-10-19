@@ -211,14 +211,13 @@ document.addEventListener('click', async (e) => {
   else if (e.target.classList.contains('delete-task-from-group-btn')) {
     e.preventDefault();
 
-    const taskId = document.querySelector(".delete-task-from-group-btn").dataset.id;
+    const taskId = e.target.dataset.id;
     const groupId = document.querySelector('.add-task-to-group-btn').dataset.id;
 
     const auth = JSON.parse(localStorage.getItem('auth'));
     await removeTaskFromGroup(auth, taskId, groupId);
   }
+
 });
 
 startApp();
-
-// TODO: добавить темную и светлую темы

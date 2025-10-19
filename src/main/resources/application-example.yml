@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:PORT/DB-NAME
+    username: USERNAME
+    password: PASSWORD
+  liquibase:
+    change-log: db/changelog/db.changelog-master.yml
+
+jwt:
+  secret: "YOUR_SUPER_SECRET_KEY"

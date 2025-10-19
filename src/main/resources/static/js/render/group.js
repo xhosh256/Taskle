@@ -62,7 +62,7 @@ export async function renderAddTaskToGroup(id) {
   const form = document.createElement('form');
   form.id = 'add-tasks-form';
 
-  const tasks = await fetchAllTasks(auth);
+  const tasks = await fetchAllTasks(auth, id);
 
   for(const task of tasks) {
     const div = document.createElement('div');

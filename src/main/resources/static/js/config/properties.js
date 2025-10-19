@@ -15,7 +15,6 @@ nav.innerHTML =
   <div class='links'>
     
   </div>
-  
 `;
 
 addGroupsToNav();

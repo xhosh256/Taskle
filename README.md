@@ -3,7 +3,7 @@ This is my first fullstack application
 ### Description
 Taskle is TODO-list type app, it allows user to create tasks he needs, besides, you can also group them in particular groups you created
 
-This is not something i can be proud of or brag about, but it my first application as backend delevoper, besides backend, i also have written super simple and ugly frontend using Vanilla JS, at the backend side i used Spring and Hibernate to write RESTful API that communicate with frontend
+This is not something i can be proud of or brag about, but its my first application as backend delevoper, besides backend, i also have written super simple and ugly frontend using Vanilla JS, at the backend side i used Spring and Hibernate to write RESTful API that communicate with frontend
 
 ### Stack:
 - String Boot

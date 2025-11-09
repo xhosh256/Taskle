@@ -6,6 +6,4 @@ import xhosh.dev.Taskle.entity.Task;
 
 public interface TaskRepository extends JpaRepository<Task, Integer>,
         QuerydslPredicateExecutor<Task> {
-
-
 }

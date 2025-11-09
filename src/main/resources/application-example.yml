@@ -6,6 +6,11 @@ spring:
     password: PASSWORD
   liquibase:
     change-log: db/changelog/db.changelog-master.yml
+  redis:
+    host: redis
+    port: 6379
+  cache:
+    type: redis
 
 jwt:
   secret: "YOUR_SUPER_SECRET_KEY"

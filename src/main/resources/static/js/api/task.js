@@ -44,3 +44,19 @@ export async function deleteTask(id) {
 
   return true;
 }
+
+export async function getRemain() {
+  const auth = JSON.parse(localStorage.getItem('auth'));
+
+  const res = await fetch(`${API}/tasks/remain`, {
+    method: 'GET',
+    headers: {'Authorization': `Bearer ${auth.token}`}
+  });
+
+  if(!res.ok) {
+    console.error("Something went wrong");
+  }
+
+  const data = await res.json();
+  return data.count;
+}

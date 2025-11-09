@@ -1,7 +1,9 @@
+import { getRemain } from "../api/task.js";
 import { addGroupsToNav, nav } from "../config/properties.js";
 import { showNav } from "../config/utils.js";
 
 export async function renderHomePage(page) {
+  const remainTasks = await getRemain();
 
   document.getElementById('app').innerHTML =
     `
@@ -43,6 +45,10 @@ export async function renderHomePage(page) {
   const div = document.createElement("div");
   div.id = 'my-tasks';
 
+  const remain = document.createElement("span");
+  remain.id = 'remain';
+  remain.innerHTML = `Remain tasks: ${remainTasks}`
+
   for (const task of page.content) {
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('task');
@@ -63,6 +69,7 @@ export async function renderHomePage(page) {
   showNav();
   document.getElementById('tasks-page').appendChild(div);
   document.getElementById('tasks-page').appendChild(nav);
+  document.getElementById('tasks-page').appendChild(remain);
   const links = document.querySelector('#nav-block .links');
   links.innerHTML = '';
   await addGroupsToNav();

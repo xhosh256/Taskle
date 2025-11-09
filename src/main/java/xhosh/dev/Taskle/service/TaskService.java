@@ -7,10 +7,12 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 import xhosh.dev.Taskle.dto.tasks.TaskCreateDto;
 import xhosh.dev.Taskle.dto.tasks.TaskFilter;
 import xhosh.dev.Taskle.dto.tasks.TaskUpdateDto;
@@ -36,6 +38,7 @@ public class TaskService {
     private TaskReadMapper taskReadMapper;
     private UserRepository userRepository;
     private TaskCreateUpdateMapper taskCreateUpdateMapper;
+    private RedisTemplate<String, Integer> taskCountRedisTemplate;
 
     public Page<TaskReadDto> findAll(TaskFilter filter, Pageable pageable) {
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -68,12 +71,15 @@ public class TaskService {
     public TaskReadDto create(TaskCreateDto task) {
         Task entity = taskCreateUpdateMapper.map(task);
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
+        final String ID = ID_PREFIX + username;
 
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
 
         user.addTask(entity);
         taskRepository.saveAndFlush(entity);
+
+        taskCountRedisTemplate.opsForValue().increment(ID + "::count");
         return taskReadMapper.map(entity);
     }
 
@@ -92,9 +98,23 @@ public class TaskService {
     @Transactional
     @CacheEvict(value = "tasks", key = "'v1::' + #taskId")
     public void delete(Integer taskId) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        final String ID = ID_PREFIX + username;
 
         var task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new TaskNotFoundException("Task not found"));
         taskRepository.delete(task);
+        taskCountRedisTemplate.opsForValue().decrement(ID + "::count");
+    }
+
+    public Integer getRemain() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        final String ID = ID_PREFIX + username;
+
+        Integer count = taskCountRedisTemplate.opsForValue().get(ID + "::count");
+        if(count == null) {
+            return 0;
+        }
+        return count;
     }
 }

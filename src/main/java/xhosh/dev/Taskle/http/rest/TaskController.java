@@ -61,4 +61,12 @@ public class TaskController {
         response.put("message", "TASK WAS SUCCESSFULLY DELETED");
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/remain")
+    public ResponseEntity<Map<String, Integer>> getRemain() {
+        Integer tasks = taskService.getRemain();
+        Map<String, Integer> response = new HashMap<>();
+        response.put("count", tasks);
+        return ResponseEntity.ok(response);
+    }
 }

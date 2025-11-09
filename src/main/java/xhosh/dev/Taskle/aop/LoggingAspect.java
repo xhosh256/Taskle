@@ -1,4 +1,0 @@
-package xhosh.dev.Taskle.aop;
-
-public class LoggingAspect {
-}
